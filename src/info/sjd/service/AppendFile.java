@@ -4,8 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AppendFile {
-
+public class AppendFile extends Thread {
+	private String FILE_NAME;
+	
+	public AppendFile(String FILE_NAME) {
+		this.FILE_NAME = FILE_NAME;
+	}
+	
+	public void run(){
+		appendFile(FILE_NAME);
+		try {
+			Thread.sleep(3*60*1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void appendFile(String FILE_NAME) {
 		
 

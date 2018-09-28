@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import info.sjd.service.AppendFile;
 import info.sjd.service.DelOldRecords;
 import info.sjd.service.FileAccess;
+import info.sjd.service.ThreadWrite333;
 
 /**
  * 
@@ -57,30 +58,32 @@ public class AppRunner {
 
 		/** INITIALISATION */
 		String DIR_NAME = "log/";
-		String FILE_NAME = DIR_NAME + "task08.txt";
+		String FILE_NAME = DIR_NAME + "task09.txt";
 
 		
 		
 		
 		/** (VOID) Save logs to file. */
-		AppendFile.appendFile(FILE_NAME);
-
+		//AppendFile.appendFile(FILE_NAME);
+		for (int i = 0 ; i < 3; i++) {
+			ThreadWrite333.threadWrite333(FILE_NAME);
+		}
 		
 		
 		
 		/** (List<String>) Read logs from log-file. */
-		List<String> lines = FileAccess.readFromFile(FILE_NAME);
+		//List<String> lines = FileAccess.readFromFile(FILE_NAME);
 		/** Demo of usage of readFromFile method. */
-		Logger logger = Logger.getLogger(AppRunner.class.getName());
+		/*Logger logger = Logger.getLogger(AppRunner.class.getName());
 		for (String line : lines) {
 			logger.info(line);
-		}
+		}*/
 
 		
 		
 		
 		/** (VOID) Delete more then 3 days old records from the log-file. */
-		DelOldRecords.delOldRecords(FILE_NAME);
+		//DelOldRecords.delOldRecords(FILE_NAME);
 
 	}
 
